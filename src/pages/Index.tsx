@@ -1,13 +1,68 @@
 import { Mail } from "lucide-react";
 
+const Sparkle = ({ style, delay, size }: { style: React.CSSProperties; delay: string; size: number }) => (
+  <div
+    className="absolute rounded-full bg-primary/80"
+    style={{
+      ...style,
+      width: size,
+      height: size,
+      animation: `sparkle 3s ease-in-out ${delay} infinite`,
+      boxShadow: `0 0 ${size * 2}px ${size / 2}px hsl(187 72% 55% / 0.4)`
+    }}
+  />
+);
+
 const Index = () => {
+  const sparkles = [
+    { top: "15%", left: "10%", delay: "0s", size: 3 },
+    { top: "25%", left: "85%", delay: "0.5s", size: 4 },
+    { top: "45%", left: "5%", delay: "1s", size: 2 },
+    { top: "60%", left: "92%", delay: "1.5s", size: 3 },
+    { top: "80%", left: "15%", delay: "2s", size: 4 },
+    { top: "10%", left: "70%", delay: "0.3s", size: 2 },
+    { top: "35%", left: "95%", delay: "1.2s", size: 3 },
+    { top: "70%", left: "8%", delay: "0.8s", size: 2 },
+    { top: "85%", left: "80%", delay: "1.8s", size: 3 },
+    { top: "20%", left: "30%", delay: "2.2s", size: 2 },
+    { top: "55%", left: "75%", delay: "0.7s", size: 4 },
+    { top: "40%", left: "20%", delay: "1.4s", size: 2 },
+    { top: "75%", left: "60%", delay: "2.5s", size: 3 },
+    { top: "5%", left: "50%", delay: "0.9s", size: 2 },
+    { top: "90%", left: "40%", delay: "1.6s", size: 3 },
+  ];
+
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center px-6 py-12">
-      {/* Subtle glow orb in background */}
+    <main className="relative flex min-h-screen flex-col items-center justify-center px-6 py-12 overflow-hidden">
+      {/* Sparkles */}
+      {sparkles.map((sparkle, i) => (
+        <Sparkle
+          key={i}
+          delay={sparkle.delay}
+          size={sparkle.size}
+          style={{ top: sparkle.top, left: sparkle.left }}
+        />
+      ))}
+
+      {/* Subtle glow orbs */}
       <div 
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-20"
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full opacity-20"
         style={{
           background: "radial-gradient(circle, hsl(187 72% 55% / 0.3) 0%, transparent 70%)"
+        }}
+        aria-hidden="true"
+      />
+      <div 
+        className="pointer-events-none absolute top-1/4 left-1/4 h-[300px] w-[300px] rounded-full opacity-10 animate-float"
+        style={{
+          background: "radial-gradient(circle, hsl(187 72% 60% / 0.4) 0%, transparent 70%)"
+        }}
+        aria-hidden="true"
+      />
+      <div 
+        className="pointer-events-none absolute bottom-1/4 right-1/4 h-[250px] w-[250px] rounded-full opacity-10 animate-float-delayed"
+        style={{
+          background: "radial-gradient(circle, hsl(200 70% 55% / 0.4) 0%, transparent 70%)"
         }}
         aria-hidden="true"
       />
