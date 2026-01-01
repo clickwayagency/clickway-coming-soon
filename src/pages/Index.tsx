@@ -78,7 +78,7 @@ const Index = () => {
         {/* Main Headline */}
         <h1 className="animate-fade-in-delay-1 mt-8 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] text-foreground">
           A Results-Driven
-          <span className="block text-gradient">Digital Marketing Agency</span>
+          <span className="block text-gradient pb-1">Digital Marketing Agency</span>
         </h1>
 
         {/* Supporting Text */}
